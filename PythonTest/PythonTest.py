@@ -1,27 +1,29 @@
 import random
 
-number = random.randint(1,9)
-count = 0
-guess = 0
+
+characters = "abcdefghijklmnopqrstuvwxyz01234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()?"
+def createPw():
+    while True:
+        user = input("Generating password, Do you want a weak(enter 1) or a strong(enter 2) password? \n")
+        if user == '1':
+            password = ''.join(random.sample(characters, 2))
+            print(password)
+            break
+        elif user == '2':
+            password = ''.join(random.sample(characters, 10))
+            print(password)
+            break
+        else:
+            print("Please try again!")
+
+createPw()
 while True:
-    guess =input("Enter your guess number: ")
-
-    if guess == "exit":
-        print("Finishing the game!")
+    print("Do you want to change password? (Y|N)")
+    user = input()
+    if user == 'Y':
+        createPw()
+    elif user == 'N':
         break
     else:
-        print("Incorrect")
-        continue
+        print("Please type again")
 
-    guess = int(guess)
-    count += 1
-
-    if guess == number:
-        print("exactly right")
-        print("You guessed totally:", count, "time")
-        break
-    elif guess < number:
-        print("too low")
-    else:
-        print("too high")
-        
